@@ -18,14 +18,18 @@ A Swiggy-style food ordering frontend application built with React.js and Vite.
 ## 📂 Folder Structure
 ```bash
 src/
+├── assets/
+│   ├── logo.png
+│   └── react.svg
 ├── components/
+│   ├── Body.jsx
+│   ├── data.js
 │   ├── Header.jsx
 │   ├── RestaurantCard.jsx
-├── utils/
-│   └── data.js
+│   └── StarRatingIcon.jsx
 ├── App.jsx
-├── index.jsx
-├── styles.css
+├── index.css
+├── main.jsx
 
 
 ## Run Locally
