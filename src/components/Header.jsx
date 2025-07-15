@@ -1,36 +1,48 @@
 import logo from "../assets/logo.png";
+import nameImage from "../assets/name.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-  const logoText = "CraveKart";
+const Header = ()  => {
+ 
+  const [logBtnName , setLogBtnName] = useState("Login");
 
   return (
     <div className="header">
-      {/* Logo on the left */}
+
       <div className="logo-container">
         <img className="logo" src={logo} alt="CraveKart Logo" />
       </div>
 
-      {/* CraveKart text in the middle */}
-      <div className="logo-text">
-        {logoText.split("").map((char, index) => (
-          <span
-            key={index}
-            style={{
-              color: index % 2 === 0 ? "#95c326" : "#1d1d1d",
-            }}
-          >
-            {char}
-          </span>
-        ))}
+      <div className="name-container">
+        <img className="name-img" src={nameImage} alt="CraveKart" />
       </div>
 
-      {/* Nav items on the right */}
+
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>
+            <Link to="/" className="nav-link">Home</Link>
+          </li>
+          <li>
+            <Link to="/About" className="nav-link">About Us</Link>
+          </li>
+          <li>
+            <Link to="Contact" className="nav-link">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="Cart" className="nav-link">Cart</Link>
+          </li>
+          <li>
+            <button
+            className="login-btn"
+            onClick={() => {
+              setLogBtnName(logBtnName === "Login" ? "Logout" : "Login");
+            }}
+          >
+            {logBtnName}
+          </button>
+          </li>
         </ul>
       </div>
     </div>
