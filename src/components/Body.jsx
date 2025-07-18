@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmar from "./Shimmar";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -31,6 +32,13 @@ const Body = () => {
     setListOfRestaurants(restaurants); 
     setFilterRestaurants(restaurants);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false)
+    return(
+      <h1>Oops! You are currently offline.</h1>
+    )
 
   return listOfRestaurants.length === 0 ? (
     <Shimmar />
@@ -65,7 +73,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
-              (res) => res.avgRating > 4.5
+              (res) => res.avgRating > 4.46
             );
             setFilterRestaurants(filteredList);
           }}

@@ -2,10 +2,13 @@ import logo from "../assets/logo.png";
 import nameImage from "../assets/name.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = ()  => {
  
   const [logBtnName , setLogBtnName] = useState("Login");
+  const isOnline = useOnlineStatus();
+
 
   return (
     <div className="header">
@@ -16,6 +19,10 @@ const Header = ()  => {
 
       <div className="name-container">
         <img className="name-img" src={nameImage} alt="CraveKart" />
+      </div>
+
+      <div>
+      {!isOnline && <p style={{ color: "red" }}>⚠ You are offline!</p>}
       </div>
 
 
@@ -29,6 +36,9 @@ const Header = ()  => {
           </li>
           <li>
             <Link to="Contact" className="nav-link">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="Grocery" className="nav-link">Grocery</Link>
           </li>
           <li>
             <Link to="Cart" className="nav-link">Cart</Link>

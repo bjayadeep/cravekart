@@ -1,29 +1,17 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const { resId } = useParams(); 
-  const [menuData, setMenuData] = useState(null);
-
-  useEffect(() => {
-    fetchMenu();
-  }, [resId]);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.7447092&lng=83.2318634&restaurantId=${resId}`
-    );
-    const json = await data.json();
-    setMenuData(json?.data);
-  };
+  const { resId } = useParams();
+  const menuData = useRestaurantMenu(resId);
 
   if (!menuData) return <h3 style={{ textAlign: "center" }}>Loading menu...</h3>;
 
   const restaurantInfoCard = menuData?.cards?.find(
-  (card) => card?.card?.card?.info
-);
-const { name, cuisines, costForTwoMessage } = restaurantInfoCard?.card?.card?.info || {};
-
+    (card) => card?.card?.card?.info
+  );
+  const { name, cuisines, costForTwoMessage } =
+    restaurantInfoCard?.card?.card?.info || {};
 
   const itemCards =
     menuData?.cards
@@ -36,7 +24,9 @@ const { name, cuisines, costForTwoMessage } = restaurantInfoCard?.card?.card?.in
     <div className="menu-container">
       <div className="restaurant-info">
         <h1 className="restaurant-name">{name}</h1>
-        <p className="restaurant-meta">{cuisines?.join(", ")} - {costForTwoMessage}</p>
+        <p className="restaurant-meta">
+          {cuisines?.join(", ")} - {costForTwoMessage}
+        </p>
       </div>
 
       <h2 className="menu-heading">Recommended</h2>
@@ -47,7 +37,9 @@ const { name, cuisines, costForTwoMessage } = restaurantInfoCard?.card?.card?.in
             <li className="menu-item" key={info.id}>
               <div className="menu-item-info">
                 <div className="item-name">{info.name}</div>
-                <div className="item-price">₹{info.price / 100 || info.defaultPrice / 100}</div>
+                <div className="item-price">
+                  ₹{info.price / 100 || info.defaultPrice / 100}
+                </div>
               </div>
               {info.imageId && (
                 <img
