@@ -1,62 +1,79 @@
 import logo from "../assets/logo.png";
 import nameImage from "../assets/name.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
-const Header = ()  => {
- 
-  const [logBtnName , setLogBtnName] = useState("Login");
+export default function Header() {
+  const [logBtnName, setLogBtnName] = useState("Login");
   const isOnline = useOnlineStatus();
 
-
   return (
-    <div className="header">
+    <header className="w-full bg-white shadow-md">
+      <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-3 sm:px-8">
+        
+        <div className="flex items-center space-x-3 sm:space-x-6">
+          <img className="w-14 h-auto" src={logo} alt="Logo" />
+          <img className="w-40 sm:w-60 h-auto" src={nameImage} alt="CraveKart" />
+        </div>
 
-      <div className="logo-container">
-        <img className="logo" src={logo} alt="CraveKart Logo" />
+       
+        {!isOnline && (
+          <p className="text-sm font-medium text-red-600 mr-4 hidden sm:block">
+            ⚠ Offline
+          </p>
+        )}
+
+       
+        <nav>
+          <ul className="flex items-center gap-4 sm:gap-6 text-sm sm:text-base font-medium text-gray-700">
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `px-2 sm:px-3 hover:text-blue-600 ${isActive ? "text-blue-600" : ""}`
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="px-2 sm:px-3 hover:text-blue-600">
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className="px-2 sm:px-3 hover:text-blue-600">
+                Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/grocery" className="px-2 sm:px-3 hover:text-blue-600">
+                Grocery
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/cart" className="px-2 sm:px-3 hover:text-blue-600">
+                Cart
+              </NavLink>
+            </li>
+            <li>
+              <button
+                className="ml-2 rounded-md border border-blue-600 px-3 py-1 text-blue-600 hover:bg-blue-600 hover:text-white transition"
+                onClick={() => setLogBtnName(logBtnName === "Login" ? "Logout" : "Login")}
+              >
+                {logBtnName}
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
 
-      <div className="name-container">
-        <img className="name-img" src={nameImage} alt="CraveKart" />
-      </div>
-
-      <div>
-      {!isOnline && <p style={{ color: "red" }}>⚠ You are offline!</p>}
-      </div>
-
-
-      <div className="nav-items">
-        <ul>
-          <li>
-            <Link to="/" className="nav-link">Home</Link>
-          </li>
-          <li>
-            <Link to="/About" className="nav-link">About Us</Link>
-          </li>
-          <li>
-            <Link to="Contact" className="nav-link">Contact Us</Link>
-          </li>
-          <li>
-            <Link to="Grocery" className="nav-link">Grocery</Link>
-          </li>
-          <li>
-            <Link to="Cart" className="nav-link">Cart</Link>
-          </li>
-          <li>
-            <button
-            className="login-btn"
-            onClick={() => {
-              setLogBtnName(logBtnName === "Login" ? "Logout" : "Login");
-            }}
-          >
-            {logBtnName}
-          </button>
-          </li>
-        </ul>
-      </div>
-    </div>
+      {!isOnline && (
+        <div className="sm:hidden text-center text-xs text-red-600 pb-2">
+          ⚠ You are offline!
+        </div>
+      )}
+    </header>
   );
-};
-
-export default Header;
+}
