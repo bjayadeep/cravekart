@@ -4,6 +4,9 @@ import Body from "./Body";
 import About from "./About";
 import Contact from "./Contact";
 import RestaurantMenu from "./RestaurantMenu";
+import Cart from "./Cart"; 
+import Error from "./Error"; 
+
 import { lazy, Suspense } from "react";
 
 const Grocery = lazy(() => import("./Grocery"));
@@ -12,6 +15,7 @@ const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />, 
     children: [
       {
         path: "",
@@ -34,8 +38,12 @@ const AppRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/restaurant/:resId",
+        path: "restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "cart", 
+        element: <Cart />,
       },
     ],
   },
