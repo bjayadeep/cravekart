@@ -1,8 +1,11 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { addItem } from "../utils/cartSlice";
 
 // Single menu item
-function MenuItemCard({ info, price, onAdd }) {
+function MenuItemCard({ info, price }) {
+  const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(false);
   const maxChars = 100;
 
@@ -10,6 +13,16 @@ function MenuItemCard({ info, price, onAdd }) {
     info.description?.length > maxChars
       ? info.description.slice(0, maxChars) + "..."
       : info.description;
+
+  const handleAddItem = () => {
+    const item = {
+      id: info.id,
+      name: info.name,
+      price: price,
+      imageId: info.imageId,
+    };
+    dispatch(addItem(item));
+  };
 
   return (
     <li className="flex justify-between items-start gap-4 border-b pb-4">
@@ -39,7 +52,7 @@ function MenuItemCard({ info, price, onAdd }) {
           />
           <button
             className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 bg-white text-green-600 font-semibold px-4 py-1 rounded shadow-md border border-gray-200 hover:bg-green-50"
-            onClick={() => onAdd?.(info)}
+            onClick={handleAddItem}
           >
             ADD
           </button>
@@ -50,10 +63,9 @@ function MenuItemCard({ info, price, onAdd }) {
 }
 
 // Category accordion
-export default function RestaurantCategoryCard({ category, isOpen, onToggle, onAdd }) {
+export default function RestaurantCategoryCard({ category, isOpen, onToggle }) {
   return (
     <div className="border rounded-lg mb-4 shadow-sm">
-      {/* Accordion Header */}
       <button
         onClick={onToggle}
         className="w-full text-left px-4 py-3 bg-gray-100 hover:bg-gray-200 flex justify-between items-center"
@@ -70,7 +82,6 @@ export default function RestaurantCategoryCard({ category, isOpen, onToggle, onA
         </span>
       </button>
 
-      {/* Accordion Content */}
       {isOpen && (
         <ul className="p-4 space-y-4">
           {category.card.card.itemCards.map((item) => {
@@ -81,7 +92,6 @@ export default function RestaurantCategoryCard({ category, isOpen, onToggle, onA
                 key={info.id}
                 info={info}
                 price={price}
-                onAdd={onAdd}
               />
             );
           })}
