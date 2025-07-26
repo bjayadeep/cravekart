@@ -1,13 +1,19 @@
 # CraveKart
 
-A Swiggy-style food ordering frontend application built with React.js and Vite.
+A modern food ordering UI built using **React.js**, **Tailwind CSS**, and **Vite** — inspired by Swiggy’s interface. Designed for speed, simplicity, and clean component structure.
 
-##  Features
-- Dynamic restaurant cards rendered from JSON data
-- Top Rated Restaurants filter
-- Modular React components (Header, RestaurantCard)
-- Responsive grid layout with dark theme
-- Styled with CSS and clean JSX structure
+
+## 🚀 Features
+
+-  Explore restaurant cards with images, names, ratings, and cuisines
+-  Search functionality to filter restaurants by name
+-  Skeleton loader (Shimmer UI) while data is loading
+-  Deeply nested JSON data handled efficiently
+-  Modular component structure using React functional components
+-  Tailwind CSS for fast, responsive, and utility-first design
+-  Dynamic routing with React Router DOM (Menu page coming soon)
+-  CORS proxy for fetching Swiggy's API data
+
 
 ##  Tech Stack
 - React.js
