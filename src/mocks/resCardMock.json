@@ -1,0 +1,11 @@
+{
+  "id": "123",
+  "name": "Tasty Biryani",
+  "cuisines": ["Biryani", "Indian"],
+  "avgRating": "4.2",
+  "costForTwo": "₹200 FOR TWO",
+  "cloudinaryImageId": "sample-image-id",
+  "sla":{
+    "slaString":"25 MINS"
+  }
+}

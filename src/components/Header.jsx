@@ -47,7 +47,7 @@ export default function Header() {
             </li>
             <li>
               <NavLink to="/about" className="px-2 sm:px-3 hover:text-blue-600">
-                About
+                About me
               </NavLink>
             </li>
             <li>
@@ -58,14 +58,7 @@ export default function Header() {
                 Contact
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/grocery"
-                className="px-2 sm:px-3 hover:text-blue-600"
-              >
-                Grocery
-              </NavLink>
-            </li>
+
             <li>
               <NavLink to="/cart" className="px-2 sm:px-3 hover:text-blue-600">
                 <i className="fas fa-shopping-cart mr-1"></i>
