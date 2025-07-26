@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
 import Body from "./Body";
 import Contact from "./Contact";
 import RestaurantMenu from "./RestaurantMenu";
