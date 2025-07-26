@@ -1,18 +1,13 @@
 # CraveKart
 
-A modern food ordering UI built using **React.js**, **Tailwind CSS**, and **Vite** — inspired by Swiggy’s interface. Designed for speed, simplicity, and clean component structure.
-
+CraveKart is a responsive food ordering frontend built with **React.js** and **Tailwind CSS**, inspired by platforms like Swiggy. It fetches live restaurant and menu data using a public API (via a CORS proxy) and supports dynamic search, filtering, and detailed menu viewing.
 
 ## 🚀 Features
 
--  Explore restaurant cards with images, names, ratings, and cuisines
--  Search functionality to filter restaurants by name
--  Skeleton loader (Shimmer UI) while data is loading
--  Deeply nested JSON data handled efficiently
--  Modular component structure using React functional components
--  Tailwind CSS for fast, responsive, and utility-first design
--  Dynamic routing with React Router DOM (Menu page coming soon)
--  CORS proxy for fetching Swiggy's API data
+- **Frontend**: React.js + Tailwind CSS + Vite
+- **Routing**: `react-router-dom`
+- **API**: Swiggy's restaurant and menu data (proxied)
+- **Tooling**: ESLint, Prettier, GitHub, VSCode
 
 
 ##  Tech Stack
@@ -20,25 +15,45 @@ A modern food ordering UI built using **React.js**, **Tailwind CSS**, and **Vite
 - Vite
 - JavaScript (ES6+)
 - CSS
+- Redux
+- Testing
 
-## 📂 Folder Structure
-```bash
-src/
-├── assets/
-│   ├── logo.png
-│   └── react.svg
-├── components/
-│   ├── Body.jsx
-│   ├── data.js
-│   ├── Header.jsx
-│   ├── RestaurantCard.jsx
-│   └── StarRatingIcon.jsx
-├── App.jsx
-├── index.css
-├── main.jsx
+## 📸 Screenshots
+
+### 🏠 Homepage
+![Homepage](./screenshots/homepage.png)
+
+### 🔍 Search Results
+![Search](./screenshots/search-results.png)
+
+### 🍽️ Restaurant Menu
+![Menu](./screenshots/menu.png)
+
+## Setup Instructions
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/bjayadeep/cravekart.git
+   cd cravekart
+2. **Install dependencies**
+   ```bash
+   npm install
+3. **Run the app**
+   ```bash
+   npm install
+4. **Build for production**
+   ```bash
+   npm install
+  
+⚠️ Note: If using Swiggy’s API, make sure to use a CORS proxy or a custom backend.
 
 
-## Run Locally
-```bash
-npm install
-npm run dev
+
+
+
+
+
+
+   
+          
+    
