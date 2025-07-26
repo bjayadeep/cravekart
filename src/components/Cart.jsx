@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeItem, clearCart } from "../utils/cartSlice";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items); // ✅ FIXED HERE
+  const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
   const getPrice = (item) => {
     const rawPrice = item.price ?? item.defaultPrice ?? 0;
-    return rawPrice >= 1000 ? rawPrice / 100 : rawPrice; // Works for 1669, 2199, 338 etc
+    return rawPrice >= 1000 ? rawPrice / 100 : rawPrice;  // ✅ add closing brace
   };
 
   const handleRemove = (index) => {

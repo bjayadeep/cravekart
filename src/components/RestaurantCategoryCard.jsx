@@ -1,6 +1,6 @@
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
 // Single menu item
@@ -43,21 +43,25 @@ function MenuItemCard({ info, price }) {
           </p>
         )}
       </div>
-      {info.imageId && (
-        <div className="relative w-32 h-32 flex-shrink-0">
+      <div className="relative w-32 h-32 flex-shrink-0">
+        {info.imageId ? (
           <img
             className="w-full h-full object-cover rounded-md"
             src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${info.imageId}`}
             alt={info.name}
           />
-          <button
-            className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 bg-white text-green-600 font-semibold px-4 py-1 rounded shadow-md border border-gray-200 hover:bg-green-50"
-            onClick={handleAddItem}
-          >
-            ADD
-          </button>
-        </div>
-      )}
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400 text-sm rounded-md">
+            No Image
+          </div>
+        )}
+        <button
+          className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 bg-white text-green-600 font-semibold px-4 py-1 rounded shadow-md border border-gray-200 hover:bg-green-50"
+          onClick={handleAddItem}
+        >
+          ADD
+        </button>
+      </div>
     </li>
   );
 }
@@ -87,13 +91,7 @@ export default function RestaurantCategoryCard({ category, isOpen, onToggle }) {
           {category.card.card.itemCards.map((item) => {
             const info = item.card.info;
             const price = (info.price ?? info.defaultPrice ?? 0) / 100;
-            return (
-              <MenuItemCard
-                key={info.id}
-                info={info}
-                price={price}
-              />
-            );
+            return <MenuItemCard key={info.id} info={info} price={price} />;
           })}
         </ul>
       )}
