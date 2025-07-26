@@ -18,16 +18,16 @@ CraveKart is a responsive food ordering frontend built with **React.js** and **T
 - Redux
 - Testing
 
-## 📸 Screenshots
+##  Screenshots
 
-### 🏠 Homepage
-![Homepage](./screenshots/homepage.png)
+###  Home
+![Homepage](./screenshots/home.png)
 
-### 🔍 Search Results
-![Search](./screenshots/search-results.png)
-
-### 🍽️ Restaurant Menu
+### Menu
 ![Menu](./screenshots/menu.png)
+
+### cart
+![Search](./screenshots/cart.png)
 
 ## Setup Instructions
 
