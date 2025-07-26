@@ -1,39 +1,33 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import Body from "./Body";
-import About from "./About";
 import Contact from "./Contact";
 import RestaurantMenu from "./RestaurantMenu";
-import Cart from "./Cart"; 
-import Error from "./Error"; 
-
+import Cart from "./Cart";
+import Error from "./Error";
 import { lazy, Suspense } from "react";
 
-const Grocery = lazy(() => import("./Grocery"));
+// Lazy load About component
+const About = lazy(() => import("./About"));
 
 const AppRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />, 
+    errorElement: <Error />,
     children: [
       {
         path: "",
         element: <Body />,
       },
       {
-        path: "about",
-        element: <About />,
-      },
-      {
         path: "contact",
         element: <Contact />,
       },
       {
-        path: "grocery",
+        path: "about",
         element: (
-          <Suspense fallback={<h2>Loading Grocery Page...</h2>}>
-            <Grocery />
+          <Suspense fallback={<h2>Loading About Page...</h2>}>
+            <About />
           </Suspense>
         ),
       },
@@ -42,7 +36,7 @@ const AppRouter = createBrowserRouter([
         element: <RestaurantMenu />,
       },
       {
-        path: "cart", 
+        path: "cart",
         element: <Cart />,
       },
     ],
